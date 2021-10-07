@@ -5,5 +5,6 @@ from django.db import models
 class Image(models.Model):
     image_name=models.CharField(max_length=30)
     image_description=models.TextField()
-    image=models.ImageField(upload_to='gallery/', default=None)
+    image=models.ImageField(upload_to='photo_gallery/', default=None)
     
+
