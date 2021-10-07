@@ -8,3 +8,5 @@ class Image(models.Model):
     image=models.ImageField(upload_to='photo_gallery/', default=None)
     
 
+class Location(models.Model):
+    location_name=models.CharField(max_length=30)
