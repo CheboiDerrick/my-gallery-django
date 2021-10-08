@@ -3,9 +3,9 @@ from .models import *
 
 # Register your models here.
 
-class ArticleAdmin(admin.ModelAdmin):
-    filter_horizontal =('Category',)
+class ImageAdmin(admin.ModelAdmin):
+    filter_horizontal =('category',)
 
 admin.site.register(Category)
-admin.site.register(Image,ArticleAdmin)
+admin.site.register(Image,ImageAdmin)
 admin.site.register(Location)
