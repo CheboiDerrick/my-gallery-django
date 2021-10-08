@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime as dt
 # Create your models here.
 
 
@@ -24,6 +24,10 @@ class Image(models.Model):
     location = models.ForeignKey(
         Location, on_delete=models.CASCADE, default=None)
     category = models.ManyToManyField(Category)
+    post_time= models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['post_time']
 
     def save_image(self):
         self.save()
