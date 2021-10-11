@@ -21,8 +21,7 @@
 <div class="container-fluid mt-5">
   <div class="row">
     {% for image in images %}
-    <div class="card col-xs-6 col-sm-6 col-md-6 col-lg-4 h-100" data-bs-toggle="modal"
-      data-bs-target="#modal{{image.id}}">
+    <div class="card col-xs-6 col-sm-6 col-md-6 col-lg-4 h-100" data-bs-toggle="modal" data-bs-target="#modal{{image.id}}">
       <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
         <img src="{{image.image.url}}" class="img-fluid" />
         <a href="#!">
@@ -37,11 +36,7 @@
           <hr>
           <p class="card-text">
             Posted: {{image.post_time | timesince}} ago
-            {{image.location.name}}
           </p>
-          {%for cat in image.category.all%}
-          <p>{{cat.name}}</p>
-          {%endfor%}
         </div>
 
         <a href="#!" class="btn btn-primary">Button</a>
@@ -49,8 +44,8 @@
     </div>
 
     <!-- modal -->
-    <div class="modal fade" id="modal{{image.id}}" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false"
-      tabindex="-1" aria-labelledby="{{image.id}}Label" aria-hidden="true">
+    <div class="modal fade" id="modal{{image.id}}" role="dialog"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="{{image.id}}Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">

@@ -27,7 +27,7 @@ class Image(models.Model):
     post_time= models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['post_time']
+        ordering = ['-post_time']
 
     def save_image(self):
         self.save()
@@ -45,7 +45,7 @@ class Image(models.Model):
 
     @classmethod
     def search_image(cls, category):
-        images = cls.objects.filter(category=category)
+        images = cls.objects.filter(category__name__icontains=category)
         return images
 
     @classmethod
