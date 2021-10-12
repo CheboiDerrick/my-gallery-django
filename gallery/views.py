@@ -5,8 +5,12 @@ from .models import Image
 # Create your views here.
 
 def all_images(request):
+    
+    categories= Image.objects.distinct().values_list('category__name', flat=True)
+    # categories = [r for (r,) in categories]
+
     images=Image.objects.all()
-    return render(request, 'gallery/home.html', {'images':images})
+    return render(request, 'gallery/home.html', {'images':images, 'categories':categories})
 
 def category_images(request):
 
@@ -20,3 +24,10 @@ def category_images(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'gallery/category.html',{"message":message})
+
+def views_images(request, category):
+    categories= Image.objects.distinct().values_list('category__name', flat=True)
+    images = Image.objects.filter(category__name=category)
+    return render(request, 'gallery/category.html',{"category":category,"images": images,'categories':categories})
+
+

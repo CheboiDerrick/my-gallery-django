@@ -14,7 +14,7 @@
   ">
   <h1>77 PIXELS</h1>
   <h6 class="my-4">
-    “When words become unclear, I shall focus with photographs.”
+    “Photography is the art of making memories tangible.”
   </h6>
 </div>
 
@@ -39,9 +39,7 @@
             Posted: {{image.post_time | timesince}} ago
             {{image.location.name}}
           </p>
-          {%for cat in image.category.all%}
-          <p>{{cat.name}}</p>
-          {%endfor%}
+
         </div>
 
         <a href="#!" class="btn btn-primary">Button</a>
@@ -58,10 +56,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            {{image.name}} {{image.description}} Posted: {{image.post_time | timesince}}
+            <div class="d-flex justify-content-between align-content-center">
+            <h2>{{image.name}}</h2>
+            <p> Posted: {{image.post_time | timesince}}</p>
+            
+            </div>
+            <h3>{{image.description}}</h3>
             <img src="{{image.image.url}}" class="img-fluid" alt="">
 
             <div class="text-center">
+              {%for cat in image.category.all%}
+              <nav class="nav nav-pills">
+                <a href="#" class="nav-item nav-link active">{{cat.name}}</a>
+              </nav>
+              {%endfor%}
               <button type="submit" class="btn btn-primary">
                 Copy Link
               </button>

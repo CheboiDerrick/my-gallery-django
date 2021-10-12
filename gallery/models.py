@@ -1,7 +1,5 @@
 from django.db import models
-import datetime as dt
 # Create your models here.
-
 
 class Location(models.Model):
     name = models.CharField(max_length=30)
@@ -52,3 +50,7 @@ class Image(models.Model):
     def filter_by_location(cls, location):
         images = cls.objects.filter(location=location)
         return images
+
+    @classmethod
+    def view_by_category(cls, category):
+        images=cls.objects.filter
