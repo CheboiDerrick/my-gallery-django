@@ -3,8 +3,8 @@ from .models import  *
 class CategoryTestClass (TestCase):
 
     def setUp(self):
-            self.category = Category(name='Science')
-            self.category.save_category()
+        self.category = Category(name='Science')
+        self.category.save_category()
 
     def test_instance(self):
         self.assertTrue(isinstance(self.category, Category))
