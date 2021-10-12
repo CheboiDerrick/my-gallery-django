@@ -42,32 +42,54 @@
     </div>
 
     <!-- modal -->
-    <div class="modal fade" id="modal{{image.id}}" role="dialog"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-      aria-labelledby="{{image.id}}Label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="{{image.id}}Label">Photo Details</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            {{image.name}} {{image.description}} Posted: {{image.post_time | timesince}}
-            <img src="{{image.image.url}}" class="img-fluid" alt="">
+    <div class="modal fade" id="modal{{image.id}}" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="{{image.id}}Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="{{image.id}}Label">Photo Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-content-center">
+            <h2>{{image.name}}</h2>
+            <p> Posted: {{image.post_time | timesince}} ago</p>
 
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">
-                Copy Link
+          </div>
+          <h6>{{image.description}}</h6>
+          <img src="{{image.image.url}}" class="img-fluid" alt="">
+
+          <div class="d-flex flex-column mt-3">
+            <div class="d-flex justify-content-between">
+              <div class="mb-3">
+                {%for cat in image.category.all%}
+                <span class="label label-default"><a href="{%url 'view_category' cat.name%}"><button
+                      class="btn btn-success">{{ cat.name}} </button></a></span>
+                {%endfor%}
+
+              </div>
+              <div class="mb-3">
+                <span class="label label-info"><a href="{%url 'view_places' image.location.name%}"><button
+                      class="btn btn-success">{{image.location.name}} </button></a></span>
+              </div>
+            </div>
+            <div class='text-center'>
+              <input type="text" value="http://127.0.0.1:8000{{image.image.url}}" id="{{image.id}}"/>
+              <button type="submit" class="btn btn-primary text-center" onclick="copyUrl('{{image.id}}')">
+                Share Image
               </button>
             </div>
+
           </div>
-          <div class="modal-footer d-flex align-items-center justify-content-end">
-            <button type="button" class="btn btn-danger" type="button" data-bs-dismiss="modal" aria-label="Close">
-              Close
-            </button>
-          </div>
+        </div>
+        <div class="modal-footer d-flex align-items-center justify-content-end">
+          <button type="button" class="btn btn-danger" type="button" data-bs-dismiss="modal" aria-label="Close">
+            Close
+          </button>
         </div>
       </div>
     </div>
+  </div>
 
     {% empty %}
     <div class="row">
