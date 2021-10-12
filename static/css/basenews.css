@@ -1,5 +1,5 @@
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -11,27 +11,25 @@
   border-bottom: 2px solid rgba(225, 225, 225, 0.5);
 }
 
-.navbar a{
+.navbar a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   background: rgba(0, 0, 128, 0.3);
   color: #ffff;
   border-bottom: 2px solid rgba(225, 225, 225, 0.5);
 }
 
-.dropdown-menu li:hover{
-  
+.dropdown-menu li a:hover {
   background: rgba(0, 0, 128, 0.3);
   color: #ffff;
-  border-bottom: 2px solid rgba(225, 225, 225, 0.5);
 }
 
-.navbar a:hover{
+.navbar a:hover {
   text-decoration: none;
-  color:white;
+  color: white;
   transform: scale(1.1);
 }
 
@@ -44,19 +42,29 @@
       rgba(255, 0, 150, 0.3)
     ),
     url("../../static/images/fakurian-design-tac7TY2ItGA-unsplash.jpg");
-  /* background-image: url('../../static/images/fakurian-design-tac7TY2ItGA-unsplash.jpg'); */
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.landing-cat {
+  height: 40vh;
+  background-color: rgba(0, 0, 128, 1);
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 128, 0.3),
+      rgba(255, 0, 150, 0.3)
+    ),
+    url("../../static/images/fakurian-design-tac7TY2ItGA-unsplash.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
 
 .card {
   border-radius: 4px;
-  /* background: #fff; */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
   transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
     0.3s box-shadow,
     0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
-  /* padding: 14px 80px 18px 36px; */
   cursor: pointer;
 }
 
@@ -67,4 +75,17 @@
 
 .card h3 {
   font-weight: 600;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background: white;
+  height: 5px;
+  box-shadow: 0 0 0;
+  border:1px solid rgba(128, 128, 128, 0.5);
+  color:black;
+  border-radius: 10px;
+  font-size:xx-small;
+  padding: 10px;
+  margin-top: 3px;
 }

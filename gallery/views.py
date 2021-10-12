@@ -1,16 +1,15 @@
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Image
+from .models import *
 
 # Create your views here.
 
 def all_images(request):
     
-    categories= Image.objects.distinct().values_list('category__name', flat=True)
-    # categories = [r for (r,) in categories]
-
+    categories= Category.objects.all()
+    locations= Location.objects.all()
     images=Image.objects.all()
-    return render(request, 'gallery/home.html', {'images':images, 'categories':categories})
+    return render(request, 'gallery/home.html', {'images':images, 'categories':categories,'locations':locations})
 
 def category_images(request):
 
@@ -26,8 +25,15 @@ def category_images(request):
         return render(request, 'gallery/category.html',{"message":message})
 
 def views_images(request, category):
-    categories= Image.objects.distinct().values_list('category__name', flat=True)
+    categories= Category.objects.all()
+    locations= Location.objects.all()
     images = Image.objects.filter(category__name=category)
-    return render(request, 'gallery/category.html',{"category":category,"images": images,'categories':categories})
+    return render(request, 'gallery/category.html',{"category":category,"images": images,'categories':categories,'locations':locations})
+
+def views_location(request, location):
+    categories= Category.objects.all()
+    locations= Location.objects.all()
+    images = Image.objects.filter(location__name=location)
+    return render(request, 'gallery/location.html',{"category":location,"images": images,'categories':categories, 'locations':locations, 'location':location})
 
 

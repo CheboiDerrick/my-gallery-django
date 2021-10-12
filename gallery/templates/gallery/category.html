@@ -5,14 +5,14 @@
 <div class="
     container-fluid
     text-center
-    landing
+    landing-cat
     text-white
     d-flex
     flex-column
     justify-content-center
     align-center
   ">
-  <h1>77 PIXELS</h1>
+  <h1>77 PIXELS || {{ category }} </h1>
   <h6 class="my-4">
     “When words become unclear, I shall focus with photographs.”
   </h6>
@@ -38,8 +38,6 @@
             Posted: {{image.post_time | timesince}} ago
           </p>
         </div>
-
-        <a href="#!" class="btn btn-primary">Button</a>
       </div>
     </div>
 

@@ -2,49 +2,61 @@
 {% load static%}
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
 
   {% if title %}
-  <title>Moringa Tribune - {{title}}</title>
+  <title>77Pixels - {{title}}</title>
   {% else %}
-    <title> Moringa Tribune </title>
+  <title> 77Pixels </title>
   {% endif %}
-
+  <link rel="shortcut icon" type="image/jpg" href="../../../static/images/logo.jpg" />
   {% block styles %}
-    {% bootstrap_css %}
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
-  rel="stylesheet"
-/>
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+  <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
   {% endblock %}
 
 </head>
+
 <body>
-    {% include "navbar.html" %}
+  {% include "navbar.html" %}
 
-    {% block content %} {%endblock%}
+  {% block content %} {%endblock%}
 
-    {% block scripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- MDB -->
-      <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
-      ></script>
-     {% bootstrap_javascript %}
-    {% endblock %}
+  {% block scripts %}
+  <script>
+    function copyUrl(id) {
+      /* Get the text field */
+      var copyText = document.getElementById(id);
+      console.log(copyText.value);
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      /* Alert the copied text */
+      alert("Copied!");
+    }
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+  {% bootstrap_javascript %}
+  {% endblock %}
 </body>
+
 </html>

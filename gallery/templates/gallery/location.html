@@ -5,28 +5,23 @@
 <div class="
     container-fluid
     text-center
-    landing
+    landing-cat
     text-white
     d-flex
     flex-column
     justify-content-center
     align-center
   ">
-  <h1>77 PIXELS</h1>
+  <h1>77 PIXELS | {{location}} </h1>
   <h6 class="my-4">
-    “Photography is the art of making memories tangible.”
+    “When words become unclear, I shall focus with photographs.”
   </h6>
-</div>
-
-<div class="text-center mt-5">
-  <h1>Gallery</h1>
 </div>
 
 <div class="container-fluid mt-5">
   <div class="row">
     {% for image in images %}
-    <div class="card col-xs-6 col-sm-6 col-md-6 col-lg-4 h-100" data-bs-toggle="modal"
-      data-bs-target="#modal{{image.id}}">
+    <div class="card col-xs-6 col-sm-6 col-md-6 col-lg-4 h-100" data-bs-toggle="modal" data-bs-target="#modal{{image.id}}">
       <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
         <img src="{{image.image.url}}" class="img-fluid" />
         <a href="#!">
@@ -41,16 +36,14 @@
           <hr>
           <p class="card-text">
             Posted: {{image.post_time | timesince}} ago
-            {{image.location.name}}
           </p>
-
         </div>
       </div>
     </div>
 
     <!-- modal -->
-    <div class="modal fade" id="modal{{image.id}}" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false"
-      tabindex="-1" aria-labelledby="{{image.id}}Label" aria-hidden="true">
+    <div class="modal fade" id="modal{{image.id}}" role="dialog"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="{{image.id}}Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -58,35 +51,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="d-flex justify-content-between align-content-center">
-              <h2>{{image.name}}</h2>
-              <p> Posted: {{image.post_time | timesince}} ago</p>
-
-            </div>
-            <h6>{{image.description}}</h6>
+            {{image.name}} {{image.description}} Posted: {{image.post_time | timesince}}
             <img src="{{image.image.url}}" class="img-fluid" alt="">
 
-            <div class="d-flex flex-column mt-3">
-              <div class="d-flex justify-content-between">
-                <div class="mb-3">
-                  {%for cat in image.category.all%}
-                  <span class="label label-default"><a href="{%url 'view_category' cat.name%}"><button
-                        class="btn btn-success">{{ cat.name}} </button></a></span>
-                  {%endfor%}
-
-                </div>
-                <div class="mb-3">
-                  <span class="label label-info"><a href="{%url 'view_places' image.location.name%}"><button
-                        class="btn btn-success">{{image.location.name}} </button></a></span>
-                </div>
-              </div>
-              <div class='text-center'>
-                <input type="text" value="http://127.0.0.1:8000{{image.image.url}}" id="{{image.id}}"/>
-                <button type="submit" class="btn btn-primary text-center" onclick="copyUrl('{{image.id}}')">
-                  Share Image
-                </button>
-              </div>
-
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                Copy Link
+              </button>
             </div>
           </div>
           <div class="modal-footer d-flex align-items-center justify-content-end">
