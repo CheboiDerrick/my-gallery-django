@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 pillow = "*"
 gunicorn = "*"
 django-heroku = "*"
+cloudinary = "*"
 
 [dev-packages]
 autopep8 = "*"
