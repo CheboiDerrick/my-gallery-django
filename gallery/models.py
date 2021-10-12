@@ -67,4 +67,6 @@ class Image(models.Model):
 
     @classmethod
     def view_by_category(cls, category):
-        images=cls.objects.filter
+        images = cls.objects.filter(category__name=category)
+        return images
+
